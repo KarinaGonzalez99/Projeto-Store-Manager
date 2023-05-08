@@ -28,4 +28,18 @@ const insert = async (product) => {
   return { id: insertId, name: product };
 };
 
-module.exports = { getAll, findById, insert };
+const idUp = async (id, name) => {
+  try {
+    const [result] = await connection.execute(
+      'UPDATE StoreManager.products SET name = ? WHERE id = ?;',
+      [name, id],
+    );
+
+    return result;
+  } catch (error) {
+    console.error(`Error updating product with ID ${id} to ${name}: ${error.message}`);
+    throw error;
+  }
+};
+
+module.exports = { getAll, findById, insert, idUp };

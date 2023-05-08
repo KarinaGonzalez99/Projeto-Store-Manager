@@ -10,4 +10,6 @@ router.get('/:id', controller.findById); // baseado no id
 
 router.post('/', middleware, controller.insert);
 
+router.put('/:id', controller.updateProduct);
+
 module.exports = router;

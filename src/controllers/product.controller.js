@@ -25,4 +25,18 @@ const insert = async (req, res) => {
   res.status(201).json({ id, name: productName });
 };
 
-module.exports = { getAll, findById, insert };
+const updateProduct = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { name } = req.body;
+
+    const result = await service.idUp(id, name);
+
+    return res.status(result.type).json(result.message);
+  } catch (error) {
+    console.error('Error updating product:', error);
+    return res.status(500).json({ message: 'An error occurred while updating the product' });
+  }
+};
+
+module.exports = { getAll, findById, insert, updateProduct };
