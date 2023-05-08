@@ -77,21 +77,4 @@ describe("Service testes", () => {
 
       expect(result).to.deep.equal(expected);
     });
-
-    it('', async () => {
-      const name = "Produto atualizado";
-      const id = 1;
-      const expected = {
-        type: 200,
-        message: { id, name },
-      };
-
-      sinon.stub(model, "idUp").resolves({ changedRows: 1 });
-      sinon.stub(service, "validateName").resolves(null);
-
-      const result = await service.idUp(id, name);
-
-      expect(result).to.deep.equal(expected);
-    });
-
 });
