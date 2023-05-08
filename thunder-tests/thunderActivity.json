@@ -33,5 +33,19 @@
         "value": "10"
       }
     ]
+  },
+  {
+    "_id": "a0467038-2d90-4cda-81e4-2c666fae351e",
+    "colId": "history",
+    "containerId": "",
+    "name": "https://www.thunderclient.com/welcome",
+    "url": "https://www.thunderclient.com/welcome",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2023-05-08T19:16:01.422Z",
+    "modified": "2023-05-08T19:16:01.422Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]

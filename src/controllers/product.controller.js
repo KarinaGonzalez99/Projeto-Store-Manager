@@ -18,4 +18,11 @@ const findById = async (req, res) => {
   sendResponse(res, result);
 };
 
-module.exports = { getAll, findById };
+const insert = async (req, res) => {
+  const { name } = req.body;
+  const response = await service.insert(name);
+  const { id, name: productName } = response.message;
+  res.status(201).json({ id, name: productName });
+};
+
+module.exports = { getAll, findById, insert };
