@@ -1,24 +1,27 @@
 const { expect } = require("chai");
 const sinon = require("sinon");
 
-const mock = require("./mock/product.mock");
+const mock = require("../models/mock/product.mock");
 const model = require("../../../src/models/product.model");
 const service = require("../../../src/services/product.service");
 
-describe('Services testes', () => {
-  beforeEach(() => {
+describe("Service testes", () => {
+  afterEach(() => {
     sinon.restore();
   });
 
   it('', async () => {
-    sinon.stub(model, 'getAll').resolves([mock]);
+    sinon.stub(model, "getAll").resolves([mock]);
     const response = await service.getAll();
-    expect(response.message).to.be.an('array');
+    expect(response.type).to.be.null;
+    expect(response.message).to.be.an("array");
+    expect(response.message).to.have.lengthOf(1);
   });
 
   it('', async () => {
-    sinon.stub(model, 'findById').resolves(mock[0]);
-    const response = await service.findById(1);
-    expect(response.message).to.have.property('id');
+    sinon.stub(model, "findById").resolves(null);
+    const response = await service.findById(999);
+    expect(response.type).to.equal(404);
+    expect(response.message).to.equal("Product not found");
   });
-})
+});
